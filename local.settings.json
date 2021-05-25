@@ -14,5 +14,8 @@
     "FUNCTIONS_WORKER_RUNTIME": "node",
     "WEBSITE_SITE_NAME": "Sister-Code",
     "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=storageaccountrgprob5e7;AccountKey=1sOsCaOc1F6alEwEDvAXnM5NEjFR5I2y4xFxyc/KY97R+V0Ke+RLVzdls+rJVeCLbhUGVBLgTH/YOchyuASMqA==;EndpointSuffix=core.windows.net"
+  },
+  "Host": {
+    "CORS": "*"
   }
 }
