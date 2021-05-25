@@ -11,12 +11,24 @@ module.exports = async function (context, req) {
   const database = client.database(config.databaseId);
   const container = database.container(config.containerId);
 
-  const theId = req.params.id;
-  const { resource: theProject } = await container.item(theId).read();
+  const theId = req.query.id;
+  const theCategory = req.query.category;
+  const newObject = req.body;
+
+  const { resource: theProject } = await container.item(theId,theCategory).read();
+  
+  // const hardId = 'ab09089c-38cb-4187-8cfd-c875c743b36a'
+  // const hardCategory = 'task'
+
+  // const { resource: theProject } = await container.item(hardId,hardCategory).read();
 
   const { id, category } = theProject;
 
-  theProject.project = "Grapple with a bear";
+  
+
+  theProject.project = newObject.project;
+
+  console.log(theProject);
 
   const { resource: updatedItem } = await container
     .item(id, category)
@@ -24,7 +36,7 @@ module.exports = async function (context, req) {
 
   const responseMessage = {
     status: 200,
-    message: res.message,
+    message: "it works, maybe",
     data: updatedItem,
   };
 

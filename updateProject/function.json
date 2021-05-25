@@ -5,13 +5,16 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": ["put"],
-      "route": "projects/{id}"
+      "id":"req",
+      "category":"req",
+      "methods": ["put"]
     },
     {
       "type": "http",
       "direction": "out",
-      "name": "res"
+      "name": "res",
+      "id": "res",
+      "category": "res"
     }
   ]
 }
