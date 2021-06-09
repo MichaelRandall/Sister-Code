@@ -16,7 +16,6 @@ const secretClient = new SecretClient(keyVaultUri, credential);
 
 module.exports = async function (context, req) {
   const endpoint = config.endpoint;
-  // const key = config.key;
   const secretKey = await secretClient.getSecret("cosmosProjectKey");
   const key = secretKey.value;
   const client = new CosmosClient({ endpoint, key });
@@ -24,7 +23,7 @@ module.exports = async function (context, req) {
   const database = client.database(config.databaseId);
   const container = database.container(config.containerId);
 
-  const theId = req.query.id;
+  const theId = req.params.id;
   const theCategory = req.query.category;
 
   const { resource: result } = await container

@@ -26,7 +26,9 @@ module.exports = async function (context, req) {
   const database = client.database(config.databaseId);
   const container = database.container(config.containerId);
 
-  const theId = req.query.id;
+  // req.params is part of the url path
+  const theId = req.params.id;
+  // req.query is part of the query string
   const theCategory = req.query.category;
   const newObject = req.body;
 
@@ -34,16 +36,9 @@ module.exports = async function (context, req) {
     .item(theId, theCategory)
     .read();
 
-  // const hardId = 'ab09089c-38cb-4187-8cfd-c875c743b36a'
-  // const hardCategory = 'task'
-
-  // const { resource: theProject } = await container.item(hardId,hardCategory).read();
-
   const { id, category } = theProject;
 
   theProject.project = newObject.project;
-
-  console.log(theProject);
 
   const { resource: updatedItem } = await container
     .item(id, category)

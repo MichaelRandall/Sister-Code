@@ -5,9 +5,10 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "id":"req",
-      "category":"req",
-      "methods": ["put"]
+      "id": "req",
+      "category": "req",
+      "methods": ["put"],
+      "route": "projects/{id}"
     },
     {
       "type": "http",
